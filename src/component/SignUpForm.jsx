@@ -17,33 +17,22 @@ const SignUpForm = () => {
         [name]: value
        }));
     }
-
-    const handleSubmit = (e)=>{
-        e.preventDefault();
-        const {name, email, password, city} = formData;
-       console.log("formData:", formData)
+    const validation = ()=>{
+          const {name, email, password, city} = formData;
+       let newErros ={};
         if( name.length < 3 || name.trim() === ''){
-            setErrorMessage((prevError)=>({
-                ...prevError,
-                name: 'Name must be at least 3 characters long'
-            }));
+            newErros.name = 'Name must be at least 3 characters long';
+            setErrorMessage(newErros);
         }else if( email.trim() === '' || !/\S+@\S+\.\S+/.test(email)){
-            setErrorMessage((prevError)=>({
-                ...prevError,
-                email: 'Please enter a valid email address'
-            }));
+            newErros.email = 'Please enter a valid email address';
+            setErrorMessage(newErros);
         }else if(  password.trim() === '' || password.length < 6){
-            setErrorMessage((prevError)=>({
-                ...prevError,
-                password: 'Password must be at least 6 characters long'
-            }));
-         
+            newErros.password = 'Password must be at least 6 characters long';
+            setErrorMessage(newErros);
         }else if( city.trim() === ''){
              console.log("formData-city:", city)
-            setErrorMessage((prevError)=>({
-                ...prevError,
-                city: 'Please select your city'
-            }));
+            newErros.city = 'Please select your city';
+            setErrorMessage(newErros);
         }else{
             setErrorMessage({
                 name: '',
@@ -51,14 +40,21 @@ const SignUpForm = () => {
                 password: '',
                 city: ''
             });
-            alert(`Name: ${formData.name}\nEmail: ${formData.email}\nPassword: ${formData.password}\nCity: ${formData.city}`);
+          
+        }
+        return Object.keys(newErros).length === 0;
+    }
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+       if( validation()){
+          alert(`Name: ${formData.name}\nEmail: ${formData.email}\nPassword: ${formData.password}\nCity: ${formData.city}`);
             console.log({   
                 name: formData.name,
                 email: formData.email,
                 password: formData.password,
                 city: formData.city
             });
-        }
+       }
 
       
     }
