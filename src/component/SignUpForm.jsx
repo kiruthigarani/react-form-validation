@@ -4,10 +4,11 @@ const SignUpForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        city:''
     });
 
-    const [errorMessage, setErrorMessage] = useState({name: '', email: '', password: ''});
+    const [errorMessage, setErrorMessage] = useState({name: '', email: '', password: '', city: ''});
 
     const changeHandler = (e)=>{
         const {name, value} = e.target;
@@ -19,34 +20,43 @@ const SignUpForm = () => {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        const {name, email, password} = formData;
-
-        if(name === 'name' && name.length < 3 || name.trim() === ''){
+        const {name, email, password, city} = formData;
+       console.log("formData:", formData)
+        if( name.length < 3 || name.trim() === ''){
             setErrorMessage((prevError)=>({
                 ...prevError,
                 name: 'Name must be at least 3 characters long'
             }));
-        }else if(email === 'email' && email.trim() === '' || !/\S+@\S+\.\S+/.test(email)){
+        }else if( email.trim() === '' || !/\S+@\S+\.\S+/.test(email)){
             setErrorMessage((prevError)=>({
                 ...prevError,
                 email: 'Please enter a valid email address'
             }));
-        }else if(password === 'password' &&  password.trim() === '' || password.length < 6){
+        }else if(  password.trim() === '' || password.length < 6){
             setErrorMessage((prevError)=>({
                 ...prevError,
                 password: 'Password must be at least 6 characters long'
+            }));
+         
+        }else if( city.trim() === ''){
+             console.log("formData-city:", city)
+            setErrorMessage((prevError)=>({
+                ...prevError,
+                city: 'Please select your city'
             }));
         }else{
             setErrorMessage({
                 name: '',
                 email: '',
-                password: ''
+                password: '',
+                city: ''
             });
-            alert(`Name: ${formData.name}\nEmail: ${formData.email}\nPassword: ${formData.password}`);
+            alert(`Name: ${formData.name}\nEmail: ${formData.email}\nPassword: ${formData.password}\nCity: ${formData.city}`);
             console.log({   
                 name: formData.name,
                 email: formData.email,
-                password: formData.password
+                password: formData.password,
+                city: formData.city
             });
         }
 
@@ -77,6 +87,18 @@ const SignUpForm = () => {
                 <input className='ml-2 border border-black-300' type='password' id='password' name='password' value={formData.password} onChange={changeHandler} placeholder='Enter your password'/>
                 {errorMessage.password && <p className='text-red-500 mt-2'>{errorMessage.password}</p>}
             </div>
+             <div className='mb-4 '>
+                <label htmlFor='city' className='' >City</label>
+                <select className='ml-2 bg-gray-700 border border-black-300
+                ' id='city' name='city' value={formData.city} onChange={changeHandler}>
+                    <option value=''>Select your city</option>
+                    <option value='Madurai'>Madurai</option>
+                    <option value='Trichy'>Trichy</option>
+                    <option value='Chennai'>Chennai</option>
+                </select>
+                {errorMessage.city && <p className='text-red-500 mt-2'>{errorMessage.city}</p>}
+            </div>
+
 
 
              <div className=''>
