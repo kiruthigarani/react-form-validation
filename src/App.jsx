@@ -1,16 +1,45 @@
 import React from 'react';
 import SignUpForm from './component/SignUpForm.jsx';
+import Home from './component/Home.jsx';
+import ToDoList from './component/ToDoList.jsx';
+import { createBrowserRouter,RouterProvider } from 'react-router-dom';
+
+
 import './App.css'
+
 
 function App() {
 
+  const routes = createBrowserRouter([{
+    path: '/',
+    element: <Home />,
+    children:[
+      {
+        path: '/signup',
+        element: <SignUpForm />
+      },
+      {
+        path: '/todolist',
+        element: <ToDoList/>
+      },
+
+      {
+        path: '/stopwatch',
+         element: <div className="text-white">stopwatch</div>
+      },
+      {
+        path: '/trafficlight',
+         element: <div className="text-white">Traffic </div>
+      }
+    ]
+  }]);
 
   return (
-    <>
-      <SignUpForm/>
-     
-    </>
+   
+    <RouterProvider router={routes} />
+  
+   
   )
 }
 
-export default App
+export default App;
