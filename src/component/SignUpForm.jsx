@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import ReactHookForm from './ReactHookForm';
 const SignUpForm = () => {
     const [formData, setFormData] = useState({
@@ -7,6 +7,9 @@ const SignUpForm = () => {
         password: '',
         city:''
     });
+    useEffect(()=>{
+        console.log("formData:", formData)
+    })
 
     const [errorMessage, setErrorMessage] = useState({name: '', email: '', password: '', city: ''});
 
