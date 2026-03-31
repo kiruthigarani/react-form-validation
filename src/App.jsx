@@ -2,6 +2,7 @@ import React from 'react';
 import SignUpForm from './component/SignUpForm.jsx';
 import Home from './component/Home.jsx';
 import ToDoList from './component/ToDoList.jsx';
+import TrafficLight from './component/TrafficLight.jsx';
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 
 
@@ -29,7 +30,7 @@ function App() {
       },
       {
         path: '/trafficlight',
-         element: <div className="text-white">Traffic </div>
+         element: <TrafficLight/>
       }
     ]
   }]);

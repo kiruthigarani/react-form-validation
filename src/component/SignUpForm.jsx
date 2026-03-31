@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import ReactHookForm from './ReactHookForm';
 const SignUpForm = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -19,20 +19,20 @@ const SignUpForm = () => {
     }
     const validation = ()=>{
           const {name, email, password, city} = formData;
-       let newErros ={};
+       let newerrmsg ={};
         if( name.length < 3 || name.trim() === ''){
-            newErros.name = 'Name must be at least 3 characters long';
-            setErrorMessage(newErros);
+            newerrmsg.name = 'Name must be at least 3 characters long';
+            setErrorMessage(newerrmsg);
         }else if( email.trim() === '' || !/\S+@\S+\.\S+/.test(email)){
-            newErros.email = 'Please enter a valid email address';
-            setErrorMessage(newErros);
+            newerrmsg.email = 'Please enter a valid email address';
+            setErrorMessage(newerrmsg);
         }else if(  password.trim() === '' || password.length < 6){
-            newErros.password = 'Password must be at least 6 characters long';
-            setErrorMessage(newErros);
+            newerrmsg.password = 'Password must be at least 6 characters long';
+            setErrorMessage(newerrmsg);
         }else if( city.trim() === ''){
              console.log("formData-city:", city)
-            newErros.city = 'Please select your city';
-            setErrorMessage(newErros);
+            newerrmsg.city = 'Please select your city';
+            setErrorMessage(newerrmsg);
         }else{
             setErrorMessage({
                 name: '',
@@ -42,7 +42,7 @@ const SignUpForm = () => {
             });
           
         }
-        return Object.keys(newErros).length === 0;
+        return Object.keys(newerrmsg).length === 0;
     }
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -62,7 +62,7 @@ const SignUpForm = () => {
         //make it center of the page
         <div className='flex items-center justify-center min-h-screen'>
         <div className='p-10 justify-center  text-center bg-gray-700 w-[25%] h-[20%]'>
-            <h1 className='text-bold text-2xl mb-4' >Sign Up Form</h1>
+            <h1 className='text-bold text-2xl mb-4' >Sign Up- Normal Form</h1>
         <form>
             <div className='mb-4'>
                 <label htmlFor='name' className='' >Name</label>
@@ -103,7 +103,9 @@ const SignUpForm = () => {
             </div>
         </form>
         </div>
+         <ReactHookForm />
         </div>
+        
     );
 }
 export default SignUpForm;

@@ -35,8 +35,8 @@ const ToDoList = () => {
     setTasks(del);
   };
   return (
-    <div className="bg-gray-700 w-3xl ">
-      <div className="flex justify-cener">
+    <div className="bg-gray-700 w-3xl items-center justify-cener min-h-screen ">
+      <div className="flex text-center">
         <input
           type="text"
           className="border-amber-50 p-2 mt-5 bg-amber-50 text-black"
