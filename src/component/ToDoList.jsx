@@ -45,6 +45,23 @@ const ToDoList = () => {
       )
     );
   };
+  /*
+  const toggleCompleted = (id) => {
+  setTasks((prevTasks) => {
+    const updatedTasks = prevTasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          completed: !task.completed,
+        };
+      }
+      return task;
+    });
+
+    return updatedTasks;
+  });
+};
+  */
   return (
     <div className="bg-gray-700 w-3xl items-center justify-cener min-h-screen ">
       <div className="row">
