@@ -1,16 +1,11 @@
-import React, { Component } from "react";
+ const RenderCount = () =>{
 
-class RenderCount extends Component {
-  constructor(props) {
-    super(props);
-    this.renderCount = 0;
-  }
-
-  render() {
-    this.renderCount += 1;
-    const { name = "Component" } = this.props;
-    return <div>{name} Render Count: {this.renderCount}</div>;
-  }
+let count = 0;
+return () => {
+count++
+return <div>Render count: {count/2}</div>
+}
 }
 
 export default RenderCount;
+

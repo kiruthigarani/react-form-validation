@@ -3,6 +3,7 @@ import SignUpForm from './component/SignUpForm.jsx';
 import Home from './component/Home.jsx';
 import ToDoList from './component/ToDoList.jsx';
 import TrafficLight from './component/TrafficLight.jsx';
+import ReactHookForm from './component/ReactHookForm.jsx';
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 
 
@@ -18,6 +19,11 @@ function App() {
       {
         path: '/signup',
         element: <SignUpForm />
+      },
+      
+      {
+        path: '/reacthookform',
+        element: <ReactHookForm />
       },
       {
         path: '/todolist',

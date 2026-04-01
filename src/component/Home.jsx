@@ -10,6 +10,7 @@ const Home =()=>{
                 <Link to='/stopwatch'><li>Stop Watch</li> </Link>
                 <Link to='/trafficlight'><li>Taffic </li> </Link>
                  <Link to='/signup'> <li>Sign Up</li> </Link>
+                   <Link to='/reacthookform'> <li>React Hook Form</li> </Link>
             </ul>
             <Outlet />
         </div>

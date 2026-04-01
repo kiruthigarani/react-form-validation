@@ -1,9 +1,10 @@
 import React, {useState,useEffect} from 'react';
-import ReactHookForm from './ReactHookForm';
+
 import RenderCount from '../utils/RenderCount';
 
+  const GetRenderCount = RenderCount();
 const SignUpForm = () => {
-    
+  
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -70,7 +71,7 @@ const SignUpForm = () => {
         <div className='p-10 justify-center  text-center bg-gray-700 w-[25%] h-[20%]'>
             <h1 className='text-bold text-2xl mb-4' >Sign Up- Normal Form</h1>
         <form>
-            <RenderCount name="SignUpForm" />
+            <GetRenderCount/>
             <div className='mb-4'>
                 <label htmlFor='name' className='' >Name</label>
                 <input className='ml-2 border border-black-300' type='text' id='name' name='name' value={formData.name} onChange={changeHandler} placeholder='Enter your name'/>
@@ -110,7 +111,7 @@ const SignUpForm = () => {
             </div>
         </form>
         </div>
-         <ReactHookForm />
+      
         </div>
         
     );

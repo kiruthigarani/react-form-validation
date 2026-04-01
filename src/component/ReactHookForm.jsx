@@ -1,6 +1,9 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import RenderCount from '../utils/RenderCount';
+
+const GetRenderCount = RenderCount();
+
 function ReactHookForm() {
 
    const  {register, handleSubmit } = useForm({
@@ -20,7 +23,7 @@ function ReactHookForm() {
            <div className='p-10 justify-center  text-center bg-gray-700 w-[100%] h-[100%]'>
                <h1 className='text-bold text-2xl mb-4'>Sign Up - ReactHook Form</h1>
            <form autoComplete='off' onSubmit={handleSubmit(submit)}>
-               <RenderCount name="ReactHookForm" />
+             <GetRenderCount/>
                <div className='mb-4'>
                    <label htmlFor='name' className='pr-3' >Name</label>
                    <input className='ml-2 border border-black-300' type='text' {...register('empname')}   placeholder='Enter your name'/>
