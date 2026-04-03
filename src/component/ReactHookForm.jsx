@@ -6,7 +6,7 @@ const GetRenderCount = RenderCount();
 
 function ReactHookForm() {
 
-   const  {register, handleSubmit } = useForm({
+   const  {register, handleSubmit, formState } = useForm({
     defaultValues:{
         orderno: new Date().getTime(),
         empname:'',
@@ -38,6 +38,7 @@ function ReactHookForm() {
                 <div className="col">
                     <div className="form-floating">
                         <input type="email" className="form-control" placeholder="email" {...register('email', {
+                            mode: "onChange",
                             required: "Email is required",
                             pattern: {
                                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -45,6 +46,7 @@ function ReactHookForm() {
                             }
                         })} />
                         <label htmlFor="email">Email</label>
+                        {formState.errors.email && <div className="text-danger">{formState.errors.email.message}</div>}
                     </div>
                 </div>
               </div>
@@ -52,6 +54,7 @@ function ReactHookForm() {
                  <div className="col">
                     <div className="form-floating">
                         <input type="name" className="form-control" placeholder="name" {...register('empname', {
+                            mode: "onChange",
                             required: "Name is required",
                             minLength: {
                                 value: 6,
@@ -59,11 +62,13 @@ function ReactHookForm() {
                             }
                         })} />
                         <label htmlFor="empname">Name</label>
+                         {formState.errors.empname && <div className="text-danger">{formState.errors.empname.message}</div>}
                     </div>
                 </div>
                 <div className="col">
                     <div className="form-floating">
                         <input type="password" className="form-control" placeholder="password" {...register('password', {
+                            mode: "onChange",
                             required: "Password is required",
                             minLength: {
                                 value: 6,
@@ -71,6 +76,7 @@ function ReactHookForm() {
                             }
                         })} />
                         <label htmlFor="password">Password</label>
+                            {formState.errors.password && <div className="text-danger">{formState.errors.password.message}</div>}
                     </div>
                 </div>
               </div>
