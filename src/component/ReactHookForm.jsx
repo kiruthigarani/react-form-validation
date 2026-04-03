@@ -6,7 +6,7 @@ const GetRenderCount = RenderCount();
 
 function ReactHookForm() {
 
-   const  {register, handleSubmit, formState } = useForm({
+   const  {register, handleSubmit, formState:{errors} } = useForm({
     defaultValues:{
         orderno: new Date().getTime(),
         empname:'',
@@ -46,7 +46,7 @@ function ReactHookForm() {
                             }
                         })} />
                         <label htmlFor="email">Email</label>
-                        {formState.errors.email && <div className="text-danger">{formState.errors.email.message}</div>}
+                        {errors.email && <div className="text-danger">{errors.email.message}</div>}
                     </div>
                 </div>
               </div>
@@ -62,7 +62,7 @@ function ReactHookForm() {
                             }
                         })} />
                         <label htmlFor="empname">Name</label>
-                         {formState.errors.empname && <div className="text-danger">{formState.errors.empname.message}</div>}
+                         {errors.empname && <div className="text-danger">{errors.empname.message}</div>}
                     </div>
                 </div>
                 <div className="col">
@@ -76,7 +76,7 @@ function ReactHookForm() {
                             }
                         })} />
                         <label htmlFor="password">Password</label>
-                            {formState.errors.password && <div className="text-danger">{formState.errors.password.message}</div>}
+                            {errors.password && <div className="text-danger">{errors.password.message}</div>}
                     </div>
                 </div>
               </div>
