@@ -19,11 +19,14 @@ function ReactHookForm() {
     console.log("data:", data)
    }
    
+   const onError = (error)=>{
+    console.log("error:", error)
+   }
   return (
     <div className='flex items-center justify-center min-h-screen pl-4'>
            <div className='p-10 justify-center  text-center bg-gray-700 w-[35%] h-[35%]'>
                <h1 className='text-bold text-2xl mb-4'>Sign Up - ReactHook Form</h1>
-           <form autoComplete='off' onSubmit={handleSubmit(submit)}>
+           <form autoComplete='off' noValidate onSubmit={handleSubmit(submit, onError)}>
              <GetRenderCount/>
              <div className='row mb-3'>
                 <div className="col">
@@ -34,7 +37,13 @@ function ReactHookForm() {
                 </div>
                 <div className="col">
                     <div className="form-floating">
-                        <input type="email" className="form-control" placeholder="email" {...register('email')} />
+                        <input type="email" className="form-control" placeholder="email" {...register('email', {
+                            required: "Email is required",
+                            pattern: {
+                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                message: "Invalid email address"
+                            }
+                        })} />
                         <label htmlFor="email">Email</label>
                     </div>
                 </div>
@@ -42,13 +51,25 @@ function ReactHookForm() {
               <div className="row">
                  <div className="col">
                     <div className="form-floating">
-                        <input type="name" className="form-control" placeholder="name" {...register('empname')} />
+                        <input type="name" className="form-control" placeholder="name" {...register('empname', {
+                            required: "Name is required",
+                            minLength: {
+                                value: 6,
+                                message: "Name must be at least 6 characters"
+                            }
+                        })} />
                         <label htmlFor="empname">Name</label>
                     </div>
                 </div>
                 <div className="col">
                     <div className="form-floating">
-                        <input type="password" className="form-control" placeholder="password" {...register('password')} />
+                        <input type="password" className="form-control" placeholder="password" {...register('password', {
+                            required: "Password is required",
+                            minLength: {
+                                value: 6,
+                                message: "Password must be at least 6 characters"
+                            }
+                        })} />
                         <label htmlFor="password">Password</label>
                     </div>
                 </div>
